@@ -1,17 +1,24 @@
+
 const express = require("express");
+const serverless = require("serverless-http")
 const bodyParser = require("body-parser");
 const request = require("request");
 const https = require("https");
+const router = express.Router();
+const dotenv = require('dotenv');
 
 const app = express();
 
 app.use(express.static(__dirname + "/public"));
 app.use(bodyParser.urlencoded({ extended: true }));
 
+dotenv.config({
+  path: "./data/config.env"
+});
+
 app.get("/", function (req, res) {
   res.sendFile(__dirname + "/signup.html");
 });
-
 
 app.post("/", function (req, re) {
   const firstName = req.body.firstName;
@@ -60,7 +67,7 @@ app.post("/failure",function(req,res){
     res.redirect("/");
 })
 
-app.listen(process.env.PORT || 3000, function () {
+app.listen(process.env.PORT || 3000 , function () {
     console.log("Server is working at port 3000");
   })
 
