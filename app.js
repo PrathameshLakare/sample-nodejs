@@ -1,6 +1,4 @@
-
 const express = require("express");
-const serverless = require("serverless-http")
 const bodyParser = require("body-parser");
 const request = require("request");
 const https = require("https");
@@ -67,9 +65,6 @@ app.post("/failure",function(req,res){
     res.redirect("/");
 })
 
-app.listen(process.env.PORT || 3000 , function () {
+app.listen(3000, function () {
     console.log("Server is working at port 3000");
-  })
-
-
-// list id 30efb08666
+})
